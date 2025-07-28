@@ -154,7 +154,7 @@ class CFXLookup {
 
         if (!serverCode) {
             this.toastManager.show(
-                'Invalid CFX address format. Use e.g., "abc123" or "https://cfx.re/join/abc123".',
+                'Format Invalide ! Utilisez : "https://cfx.re/join/abc123".',
                 'error'
             );
             this.hideLoader();
