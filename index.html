@@ -1,154 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-        name="description"
-        content="Resolve CFX addresses to server details including IP, player list, location, and PDF exports."
-    />
-    <meta property="og:title" content="CFX Server Lookup" />
-    <meta
-        property="og:description"
-        content="A tool to look up FiveM server details from CFX addresses."
-    />
-    <meta property="og:url" content="https://cfx.rojinchhetri.com" />
-    <title>CFX Server Lookup</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <!-- jsPDF library with correct integrity -->
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
-        integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-    ></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CFX Tools - Suite d'outils pour l'analyse de serveurs et joueurs FiveM">
+    <title>FiveM Intelligence - Accueil</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+        <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background: #f7f7f7;
+        }
+        .tools-section {
+            padding: 2rem;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+        .tool-card {
+            width: 100%;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
-<body class="light-mode">
+<body class="dark-mode">
     <div class="theme-toggle">
-        <button
-            id="themeToggle"
-            aria-label="Toggle between light and dark theme"
-            title="Toggle theme"
-        >
-            <i class="fas fa-moon"></i>
+        <button id="themeToggle" aria-label="Changer le thème" title="Changer le thème">
+            <i class="fas fa-sun"></i>
         </button>
     </div>
 
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+<div class="brand-icon">
+    <img src="images/lgo.png" alt="Logo CFX" class="brand-logo" />
+</div>
+
+                <span class="brand-name">FiveM Intelligence</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="server.html" class="nav-link">
+                    <i class="fas fa-server"></i>
+                    <span>Serveur</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
-        <header>
-            <h1>CFX Server Lookup</h1>
-            <p>Enter a CFX address to get server information</p>
+        <header class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">FiveM Intelligence</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Suite d'outils professionnels pour l'analyse et la recherche de serveurs et joueurs FiveM
+                </p>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <i class="fas fa-search"></i>
+                        <span>Recherches Avancées</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Analyses détaillées</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-download"></i>
+                        <span>Export PDF</span>
+                    </div>
+                </div>
+            </div>
         </header>
 
-        <div class="search-container">
-            <div class="search-box">
-                <div class="input-wrapper">
-                    <input
-                        type="text"
-                        id="serverAddress"
-                        placeholder="e.g., abc123 or https://cfx.re/join/abc123"
-                        aria-label="Enter CFX address"
-                    />
-                    <button id="lookupBtn" class="gradient-btn">Lookup</button>
-                </div>
+<section class="tools-section">
+    <h2 class="section-title">Outils Disponibles</h2>
+    <div class="tools-grid">
+        <!-- Carte 1 : Analyse de Serveur -->
+        <div class="tool-card server-card">
+            <div class="tool-icon">
+                <i class="fas fa-server"></i>
+            </div>
+            <div class="tool-content">
+                <h3>Lookup de Serveur</h3>
+                <p>Obtenez des informations détaillées sur n'importe quel serveur FiveM à partir de son adresse CFX ou IP</p>
+                <ul class="tool-features">
+                    <li><i class="fas fa-check"></i> Informations serveur complètes</li>
+                    <li><i class="fas fa-check"></i> Liste des joueurs en ligne</li>
+                    <li><i class="fas fa-check"></i> Géolocalisation du serveur</li>
+                    <li><i class="fas fa-check"></i> Export PDF détaillé</li>
+                </ul>
+                <a href="server.html" class="tool-button gradient-btn">
+                    <span>Analyser un Serveur</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
 
-        <div id="loader" class="loader hidden">
-            <div class="spinner"></div>
-            <p>Fetching server information...</p>
+        <!-- Carte 2 : Meme -->
+        <div class="tool-card meme-card">
+            <div class="tool-icon">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="tool-content">
+                <h3>Lookup de Joueur</h3>
+                <p>Obtenez toutes les informations d'un joueur à partir de son Identifiant Discord (ou autre)</p>
+                <ul class="tool-features">
+                    <li><i class="fas fa-check"></i> Informations du joueur</li>
+                    <li><i class="fas fa-check"></i> License Steam / FiveM</li>
+                    <li><i class="fas fa-check"></i> Analyse Enregistrable</li>
+                    <li><i class="fas fa-check"></i> Export PDF détaillé</li>
+                </ul>
+                <a href="" class="tool-button gradient-btn">
+                    <span>INDISPONIBLE</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
 
-        <div id="error" class="error hidden"></div>
-
-        <div id="serverInfo" class="server-info hidden">
-            <div class="info-card">
-                <div class="card-header">
-                    <i class="fas fa-server"></i>
-                    <h2 id="serverName"></h2>
-                </div>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <div class="info-label">Server IP</div>
-                        <div id="serverIP" class="info-value"></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Players</div>
-                        <div id="players" class="info-value"></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">OneSync</div>
-                        <div id="onesync" class="info-value"></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Game Build</div>
-                        <div id="gamebuild" class="info-value"></div>
-                    </div>
-                </div>
+        <!-- Carte 3 : Dupliqué & Modif -->
+        <div class="tool-card duplicate-card">
+            <div class="tool-icon">
+                <i class="fas fa-search-location"></i>
             </div>
-
-            <div class="info-card">
-                <div class="card-header">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h2>Location Info</h2>
-                        <p>Server geographical information</p>
-                    </div>
-                </div>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <div class="info-label">Country</div>
-                        <div id="country" class="info-value"></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">City</div>
-                        <div id="city" class="info-value"></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">ISP</div>
-                        <div id="isp" class="info-value"></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Region</div>
-                        <div id="region" class="info-value"></div>
-                    </div>
-                </div>
+            <div class="tool-content">
+                <h3>Geo Lookup</h3>
+                <p>Apprennez en plus sur un joueur/serveur en obtenant son adresse / sa localisation.</p>
+                <ul class="tool-features">
+                    <li><i class="fas fa-check"></i> Recherche Rapide</li>
+                    <li><i class="fas fa-check"></i> Adresse Précise</li>
+                    <li><i class="fas fa-check"></i> Analyse Enregistrable</li>
+                    <li><i class="fas fa-check"></i> Export PDF / PNG détaillé</li>
+                </ul>
+                <a href="" class="tool-button gradient-btn">
+                    <span>INDISPONIBLE</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-
-            <div class="info-card">
-                <div class="card-header">
-                    <i class="fas fa-users"></i>
-                    <h2>Active Players</h2>
-                </div>
-                <div class="player-controls">
-                    <input
-                        type="text"
-                        id="playerSearch"
-                        placeholder="Search players..."
-                        aria-label="Search players by name"
-                    />
-                    <select id="playerSort" aria-label="Sort player list">
-                        <option value="name">Sort by Name</option>
-                        <option value="id">Sort by ID</option>
-                        <option value="ping">Sort by Ping</option>
-                    </select>
-                </div>
-                <div id="playerList" class="player-list"></div>
-            </div>
-
-            <button id="downloadPDFBtn" class="gradient-btn">
-                Download PDF
-            </button>
         </div>
+    </div>
+</section>
+
+        
+
+        <section class="stats-section">
+            <h2 class="section-title">Statistiques</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" data-target="1250">110</div>
+                        <div class="stat-label">Serveurs analysés</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" data-target="2840">23</div>
+                        <div class="stat-label">Analyses effectuées</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" data-target="342">47</div>
+                        <div class="stat-label">Rapports générés</div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <footer>
-        <p>Made with ❤️ by Rojin Chhetri</p>
+        <p>Made with ❤️ by Akorii</p>
     </footer>
-    <script src="./script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
